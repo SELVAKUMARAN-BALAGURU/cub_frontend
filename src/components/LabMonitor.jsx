@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Monitor, CheckCircle2, XCircle, RefreshCw, Wifi } from 'lucide-react';
 
-const API_URL = 'http://localhost:5000';
-
-export default function LabMonitor() {
+export default function LabMonitor({ API_URL: propApiUrl }) {
+  const API_URL = propApiUrl || import.meta.env.VITE_API_URL || 'http://localhost:5000';
   const [systems, setSystems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [toggling, setToggling] = useState(null);

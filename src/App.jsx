@@ -6,7 +6,7 @@ import ReportGenerator from './components/ReportGenerator';
 import StudentRoster from './components/StudentRoster';
 import LabMonitor from './components/LabMonitor';
 
-const API_URL = 'http://localhost:5000';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('log');
@@ -154,7 +154,7 @@ export default function App() {
             )}
 
             {activeTab === 'lab' && (
-              <LabMonitor />
+              <LabMonitor API_URL={API_URL} />
             )}
           </>
         )}
